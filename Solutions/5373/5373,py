@@ -1,0 +1,255 @@
+Up = [list("www"), list("www"), list("www")]
+Down = [list("yyy"), list("yyy"), list("yyy")]
+Front = [list("ooo"), list("ooo"), list("ooo")]
+Back = [list("rrr"), list("rrr"), list("rrr")]
+Left = [list("ggg"), list("ggg"), list("ggg")]
+Right = [list("bbb"), list("bbb"), list("bbb")]
+
+
+def U_p():
+    global Up
+    global Down
+    global Front
+    global Back
+    global Left
+    global Right
+
+    Front[0], Right[0], Back[0], Left[0] = Left[0], Front[0], Right[0], Back[0]
+    temp = [list(Up[2][i] + Up[1][i] + Up[0][i]) for i in range(3)]
+    Up = temp
+
+
+def U_m():
+    global Up
+    global Down
+    global Front
+    global Back
+    global Left
+    global Right
+
+    Front[0], Right[0], Back[0], Left[0] = Right[0], Back[0], Left[0], Front[0]
+    temp = [list(Up[0][2 - i] + Up[1][2 - i] + Up[2][2 - i]) for i in range(3)]
+    Up = temp
+
+
+def D_p():
+    global Up
+    global Down
+    global Front
+    global Back
+    global Left
+    global Right
+
+    Front[2], Right[2], Back[2], Left[2] = Right[2], Back[2], Left[2], Front[2]
+    temp = [list(Down[0][2 - i] + Down[1][2 - i] + Down[2][2 - i]) for i in range(3)]
+    Down = temp
+
+
+def D_m():
+    global Up
+    global Down
+    global Front
+    global Back
+    global Left
+    global Right
+
+    Front[2], Right[2], Back[2], Left[2] = Left[2], Front[2], Right[2], Back[2]
+    temp = [list(Down[2][i] + Down[1][i] + Down[0][i]) for i in range(3)]
+    Down = temp
+
+
+def F_p():
+    global Up
+    global Down
+    global Front
+    global Back
+    global Left
+    global Right
+
+    for i in range(3):
+        Up[0][i], Left[2 - i][0], Down[0][2 - i], Right[i][2] = (
+            Right[i][2],
+            Up[0][i],
+            Left[2 - i][0],
+            Down[0][2 - i],
+        )
+    temp = [list(Front[2][i] + Front[1][i] + Front[0][i]) for i in range(3)]
+    Front = temp
+
+
+def F_m():
+    global Up
+    global Down
+    global Front
+    global Back
+    global Left
+    global Right
+    for i in range(3):
+        Up[0][i], Left[2 - i][0], Down[0][2 - i], Right[i][2] = (
+            Left[2 - i][0],
+            Down[0][2 - i],
+            Right[i][2],
+            Up[0][i],
+        )
+    temp = [list(Front[0][2 - i] + Front[1][2 - i] + Front[2][2 - i]) for i in range(3)]
+    Front = temp
+
+
+def B_p():
+    global Up
+    global Down
+    global Front
+    global Back
+    global Left
+    global Right
+
+    for i in range(3):
+        Up[2][i], Left[2 - i][2], Down[2][2 - i], Right[i][0] = (
+            Left[2 - i][2],
+            Down[2][2 - i],
+            Right[i][0],
+            Up[2][i],
+        )
+    temp = [list(Back[2][i] + Back[1][i] + Back[0][i]) for i in range(3)]
+    Back = temp
+
+
+def B_m():
+    global Up
+    global Down
+    global Front
+    global Back
+    global Left
+    global Right
+
+    for i in range(3):
+        Up[2][i], Left[2 - i][2], Down[2][2 - i], Right[i][0] = (
+            Right[i][0],
+            Up[2][i],
+            Left[2 - i][2],
+            Down[2][2 - i],
+        )
+    temp = [list(Back[0][2 - i] + Back[1][2 - i] + Back[2][2 - i]) for i in range(3)]
+    Back = temp
+
+
+def L_p():
+    global Up
+    global Down
+    global Front
+    global Back
+    global Left
+    global Right
+
+    for i in range(3):
+        Up[i][0], Front[2 - i][2], Down[2 - i][0], Back[i][0] = (
+            Front[2 - i][2],
+            Down[2 - i][0],
+            Back[i][0],
+            Up[i][0],
+        )
+    temp = [list(Left[2][i] + Left[1][i] + Left[0][i]) for i in range(3)]
+    Left = temp
+
+
+def L_m():
+    global Up
+    global Down
+    global Front
+    global Back
+    global Left
+    global Right
+
+    for i in range(3):
+        Up[i][0], Front[2 - i][2], Down[2 - i][0], Back[i][0] = (
+            Back[i][0],
+            Up[i][0],
+            Front[2 - i][2],
+            Down[2 - i][0],
+        )
+    temp = [list(Left[0][2 - i] + Left[1][2 - i] + Left[2][2 - i]) for i in range(3)]
+    Left = temp
+
+
+def R_p():
+    global Up
+    global Down
+    global Front
+    global Back
+    global Left
+    global Right
+
+    for i in range(3):
+        Up[2 - i][2], Front[i][0], Down[i][2], Back[2 - i][2] = (
+            Back[2 - i][2],
+            Up[2 - i][2],
+            Front[i][0],
+            Down[i][2],
+        )
+    temp = [list(Right[2][i] + Right[1][i] + Right[0][i]) for i in range(3)]
+    Right = temp
+
+
+def R_m():
+    global Up
+    global Down
+    global Front
+    global Back
+    global Left
+    global Right
+
+    for i in range(3):
+        Up[2 - i][2], Front[i][0], Down[i][2], Back[2 - i][2] = (
+            Front[i][0],
+            Down[i][2],
+            Back[2 - i][2],
+            Up[2 - i][2],
+        )
+    temp = [list(Right[0][2 - i] + Right[1][2 - i] + Right[2][2 - i]) for i in range(3)]
+    Right = temp
+
+
+t = int(input())
+for _ in range(t):
+    Up = [list("www"), list("www"), list("www")]
+    Down = [list("yyy"), list("yyy"), list("yyy")]
+    Front = [list("ooo"), list("ooo"), list("ooo")]
+    Back = [list("rrr"), list("rrr"), list("rrr")]
+    Left = [list("ggg"), list("ggg"), list("ggg")]
+    Right = [list("bbb"), list("bbb"), list("bbb")]
+
+    n = int(input())
+    l = list(input().split())
+    for i in l:
+        if i[0] == "U":
+            if i[1] == "+":
+                U_p()
+            else:
+                U_m()
+        elif i[0] == "D":
+            if i[1] == "+":
+                D_p()
+            else:
+                D_m()
+        elif i[0] == "B":
+            if i[1] == "+":
+                F_p()
+            else:
+                F_m()
+        elif i[0] == "F":
+            if i[1] == "+":
+                B_p()
+            else:
+                B_m()
+        elif i[0] == "L":
+            if i[1] == "+":
+                L_p()
+            else:
+                L_m()
+        elif i[0] == "R":
+            if i[1] == "+":
+                R_p()
+            else:
+                R_m()
+    for i in Up:
+        print("".join(i))
